@@ -48,6 +48,11 @@ public:
     * @param b Le booléen en question
     */
    explicit String(bool b);
+
+   /**
+    * Destructeur
+    */
+   ~String();
 private:
    char* value;   // Valeur de la chaîne de caractères
 };
