@@ -1,12 +1,19 @@
 #ifndef STRING_HPP
 #define STRING_HPP
 
-#include <stdio.h>
+#include <cstdio>
+#include <iostream>
 
 /**
  * Permet d'implémenter une chaîne de caractères
  */
 class String {
+
+//   friend std::ostream& operator<<(std::ostream& os, const String &rhs);
+//   friend std::istream& operator>>(std::istream& is, String &rhs);
+//   friend String& operator+(const String& lhs, const char* rhs);
+//   friend String& operator+(const char* lhs, const String& rhs);
+
 public:
    /**
     * Constructeur sans paramètres
