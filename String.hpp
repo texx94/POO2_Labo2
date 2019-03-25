@@ -135,6 +135,12 @@ public:
 private:
    char* value;      // Valeur de la chaîne de caractères
    size_t length;    // Longeur de la chaîne
+
+   /**
+    * Permet de généraliser l'initialisation de la classe String
+    * @param value Valeur de la chaîne de caractères
+    */
+   void init(const char* value);
 };
 
 #endif
