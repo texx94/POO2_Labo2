@@ -9,13 +9,11 @@
  */
 class String {
 
-   static const int MAX_CHAR_READ = 80; // longeur max de la lecture au clavier
-
    friend String operator+(String lhs, const String& rhs);
    friend String operator+(String lhs, const char* rhs);
    friend String operator+(const char* lhs, const String& rhs);
-   friend std::ostream& operator<<(std::ostream& os, const String &rhs);
-   friend std::istream& operator>>(std::istream& is, String &rhs);
+   friend std::ostream& operator<<(std::ostream& os, const String& rhs);
+   friend std::istream& operator>>(std::istream& is, String& rhs);
 
 public:
    /**
@@ -49,7 +47,7 @@ public:
 
    /**
     * Constructeur à partir d'un réel
-    * @param d Le rééel en question
+    * @param d Le réel en question
     */
    explicit String(double d);
 
@@ -74,14 +72,14 @@ public:
    /**
     * Permet d'obtenir et de modifier le caractere a l'index souhaite
     * @param index index du caractere a traiter
-    * @return le caractere a l'indexe passe en parametre
+    * @return le caractere a l'index passe en parametre
     */
    char& at(size_t index);
 
    /**
-    * Permet d'obtenir et de modifier le caractere a l'index souhaite
+    * Permet d'obtenir  le caractere a l'index souhaite
     * @param index index du caractere a traiter
-    * @return le caractere a l'indexe passe en parametre
+    * @return le caractere a l'index passe en parametre
     */
    const char& at(size_t index) const;
 

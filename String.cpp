@@ -76,81 +76,93 @@ const char& String::at(size_t index) const {
    return value[index];
 }
 
-bool String::equals(const String &other) const {
+bool String::equals(const String& other) const {
    return equals(other.c_str());
 }
 
-bool String::equals(const char *other) const {
+bool String::equals(const char* other) const {
    return !(strcmp(value, other));
 }
 
-String& String::assign(const String &other) {
+String& String::assign(const String& other) {
    assign(other.c_str());
    return *this;
 }
 
-String& String::assign(const char *other) {
+String& String::assign(const char* other) {
    memcpy(value,other,strlen(other) + 1);
    return *this;
 }
 
-String& String::append(const String &other) {
+String& String::append(const String& other) {
    append(other.c_str());
    return *this;
 }
 
-String& String::append(const char *other) {
-   strcat(value,other);
+String& String::append(const char* other) {
+   // sauve la valeur actuelle
+   char* temp = new char[strlen(value) + 1];
+   strcpy(temp, value);
+   // supprime la zone allouee dynamiquement
+   delete[] value;
+   // reserve une nouvelle zone de la bonne taille
+   value = new char[strlen(temp) + strlen(other) + 1];
+   // copie l'ancienne chaine
+   strcpy(value, temp);
+   // ajoute a la fin de l'ancienne chaine l'autre chaine
+   strcpy((value + strlen(temp)), other);
+   // libere la zone temporaire
+   delete[] temp;
    return *this;
 }
 
 /* OPERATORS */
-String operator+(String lhs, const String &rhs) {
+String operator+(String lhs, const String& rhs) {
    lhs += rhs;
    return lhs;
 }
 
-String operator+(String lhs, const char *rhs) {
+String operator+(String lhs, const char* rhs) {
    lhs += rhs;
    return lhs;
 }
 
-String operator+(const char *lhs, const String &rhs) {
+String operator+(const char* lhs, const String& rhs) {
    String s(lhs);
    s += rhs;
    return s;
 }
 
-String& String::operator+=(const String &rhs) {
+String& String::operator+=(const String& rhs) {
    return this->append(rhs);
 }
 
-String& String::operator+=(const char *rhs) {
+String& String::operator+=(const char* rhs) {
    return this->append(rhs);
 }
 
-String& String::operator=(const String &rhs) {
+String& String::operator=(const String& rhs) {
    return this->assign(rhs);
 }
 
-String& String::operator=(const char *rhs) {
+String& String::operator=(const char* rhs) {
    return this->assign(rhs);
 }
 
-bool String::operator==(const String &rhs) {
+bool String::operator==(const String& rhs) {
    return this->equals(rhs);
 }
 
-bool String::operator==(const char *rhs) {
+bool String::operator==(const char* rhs) {
    return this->equals(rhs);
 }
 
-std::ostream& operator<<(std::ostream& os, const String &rhs) {
+std::ostream& operator<<(std::ostream& os, const String& rhs) {
    os << rhs.value;
    return os;
 }
 
-std::istream& operator>>(std::istream& is, String &rhs) {
+std::istream& operator>>(std::istream& is, String& rhs) {
    gets(rhs.value);
    return is;
 }
