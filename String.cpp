@@ -57,7 +57,7 @@ String::String(bool b) {
 
 /* METHODES */
 size_t String::getLength() const {
-   return length;
+   return strlen(value);
 }
 
 const char* String::c_str() const {
@@ -65,13 +65,13 @@ const char* String::c_str() const {
 }
 
 char& String::at(size_t index) {
-   if(index >= length)
+   if(index >= strlen(value))
       throw out_of_range("access out of range");
    return value[index];
 }
 
 const char& String::at(size_t index) const {
-   if(index >= length)
+   if(index >= strlen(value))
       throw out_of_range("access out of range");
    return value[index];
 }
@@ -81,10 +81,7 @@ bool String::equals(const String &other) const {
 }
 
 bool String::equals(const char *other) const {
-   if((length == strlen(other)) && !(memcmp(value, other, length))) {
-      return true;
-   }
-   return false;
+   return !(strcmp(value, other));
 }
 
 String& String::assign(const String &other) {
@@ -98,7 +95,6 @@ String& String::assign(const char *other) {
 }
 
 String& String::append(const String &other) {
-   //TODO : discuter de l'utilité d'appeler append(const char*) plutot que strcat
    append(other.c_str());
    return *this;
 }
@@ -108,27 +104,75 @@ String& String::append(const char *other) {
    return *this;
 }
 
-void String::print() const {
-   cout << value;
+ostream& String::print(ostream& os) const {
+   os << value;
 }
 
-void String::read() {
-   cin >> value;
+istream& String::read(istream& is) const {
+   is >> value;
+}
+
+/* OPERATORS */
+String operator+(String lhs, const String &rhs) {
+   lhs += rhs;
+   return lhs;
+}
+
+String operator+(String lhs, const char *rhs) {
+   lhs += rhs;
+   return lhs;
+}
+
+String operator+(const char *lhs, const String &rhs) {
+   String s(lhs);
+   s += rhs;
+   return s;
+}
+
+String& String::operator+=(const String &rhs) {
+   return this->append(rhs);
+}
+
+String& String::operator+=(const char *rhs) {
+   return this->append(rhs);
+}
+
+String& String::operator=(const String &rhs) {
+   return this->assign(rhs);
+}
+
+String& String::operator=(const char *rhs) {
+   return this->assign(rhs);
+}
+
+bool String::operator==(const String &rhs) {
+   return this->equals(rhs);
+}
+
+bool String::operator==(const char *rhs) {
+   return this->equals(rhs);
+}
+
+std::ostream& operator<<(std::ostream& os, const String &rhs) {
+   return rhs.print(os);
+}
+
+std::istream& operator>>(std::istream& is, String &rhs) {
+   return rhs.read(is);
+}
+
+/* DESTRUCTEUR */
+String::~String() {
+   delete[] value;
 }
 
 /* UTILS */
 void String::init(const char* value) {
    if (value) {
-      this->length = strlen(value);
-      this->value = new char[this->length + 1];
+      this->value = new char[strlen(value) + 1];
       strcpy(this->value, value);
    } else {
-      this->length = 0;
       this->value = new char[0];
    }
 }
 
-/* DESTRUCTEUR */
-String::~String() {
-   
-}

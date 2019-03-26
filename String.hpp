@@ -9,10 +9,11 @@
  */
 class String {
 
-//   friend std::ostream& operator<<(std::ostream& os, const String &rhs);
-//   friend std::istream& operator>>(std::istream& is, String &rhs);
-//   friend String& operator+(const String& lhs, const char* rhs);
-//   friend String& operator+(const char* lhs, const String& rhs);
+   friend String operator+(String lhs, const String& rhs);
+   friend String operator+(String lhs, const char* rhs);
+   friend String operator+(const char* lhs, const String& rhs);
+   friend std::ostream& operator<<(std::ostream& os, const String &rhs);
+   friend std::istream& operator>>(std::istream& is, String &rhs);
 
 public:
    /**
@@ -30,7 +31,7 @@ public:
     * Constructeur de copie
     * @param s Instance de la classe String sur laquelle on fait la copie
     */
-   explicit String(const String& s);
+    String(const String& s);
 
    /**
     * Constructeur à partir d'un caractère
@@ -55,11 +56,6 @@ public:
     * @param b Le booléen en question
     */
    explicit String(bool b);
-
-   /**
-    * Destructeur
-    */
-   ~String();
 
    /**
     * Permet d'obtenir la longeur de la string
@@ -130,18 +126,35 @@ public:
    String& append(const char* other);
 
    /**
-    * Permet l'affichage dans la console
+    * Permet l'écriture dans un flux
+    * @param os flux de sortie
+    * @return une reference sur le flux
     */
-   void print() const;
+   std::ostream& print(std::ostream& os) const;
 
    /**
-    * Permet la lecture de la saisie et sauve la valeur
+    * Permet de lire un flux dans un String
+    * @param is flux d'entrée
+    * @return une reference sur le flux
     */
-   void read();
+   std::istream& read(std::istream& is) const;
+
+   /**
+    * Destructeur
+    */
+   ~String();
+
+   String& operator+=(const String& rhs);
+   String& operator+=(const char* rhs);
+
+   String& operator=(const String& rhs);
+   String& operator=(const char* rhs);
+
+   bool operator==(const String& rhs);
+   bool operator==(const char* rhs);
 
 private:
    char* value;      // Valeur de la chaîne de caractères
-   size_t length;    // Longeur de la chaîne
 
    /**
     * Permet de généraliser l'initialisation de la classe String
