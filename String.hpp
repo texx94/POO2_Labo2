@@ -9,6 +9,8 @@
  */
 class String {
 
+   static const int MAX_CHAR_READ = 80; // longeur max de la lecture au clavier
+
    friend String operator+(String lhs, const String& rhs);
    friend String operator+(String lhs, const char* rhs);
    friend String operator+(const char* lhs, const String& rhs);
@@ -124,20 +126,6 @@ public:
     * @return une reference sur l'objet courant
     */
    String& append(const char* other);
-
-   /**
-    * Permet l'écriture dans un flux
-    * @param os flux de sortie
-    * @return une reference sur le flux
-    */
-   std::ostream& print(std::ostream& os) const;
-
-   /**
-    * Permet de lire un flux dans un String
-    * @param is flux d'entrée
-    * @return une reference sur le flux
-    */
-   std::istream& read(std::istream& is) const;
 
    /**
     * Destructeur

@@ -104,14 +104,6 @@ String& String::append(const char *other) {
    return *this;
 }
 
-ostream& String::print(ostream& os) const {
-   os << value;
-}
-
-istream& String::read(istream& is) const {
-   is >> value;
-}
-
 /* OPERATORS */
 String operator+(String lhs, const String &rhs) {
    lhs += rhs;
@@ -154,11 +146,13 @@ bool String::operator==(const char *rhs) {
 }
 
 std::ostream& operator<<(std::ostream& os, const String &rhs) {
-   return rhs.print(os);
+   os << rhs.value;
+   return os;
 }
 
 std::istream& operator>>(std::istream& is, String &rhs) {
-   return rhs.read(is);
+   gets(rhs.value);
+   return is;
 }
 
 /* DESTRUCTEUR */
