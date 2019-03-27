@@ -168,6 +168,8 @@ public:
 private:
    char* value;      // Valeur de la chaîne de caractères
 
+   static const unsigned MAX_CHAR_READ = 80; // Valeur maximale de caractère lu en consonle
+
    /**
     * Permet de généraliser l'initialisation de la classe String
     * @param value Valeur de la chaîne de caractères
