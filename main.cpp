@@ -1,6 +1,24 @@
-#include "String.hpp"
+/*
+ -----------------------------------------------------------------------------------
+ Laboratoire : Labo2
+ Fichier     : main.cpp
+ Auteur(s)   : Gilliand Loris - Tutic Mateo
+ Date        : 27.03.2019
+
+ But         : Programme de test de la classe String
+
+ Remarque(s) : Comme certaines méthodes sont appelées par d'autres
+               méthodes ou d'autres opérateurs, nous ne les avons pas
+               explicitement testé. Un commentaire avant chaque bloc de test
+               annonce les méthodes et opérateurs utilisés.
+
+ Compilateur : MinGW-g++ 6.3.0 - Apple LLVM 9.1.0
+ -----------------------------------------------------------------------------------
+ */
 
 #include <iostream>
+
+#include "String.hpp"
 
 using namespace std;
 

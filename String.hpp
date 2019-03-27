@@ -1,3 +1,29 @@
+/*
+ -----------------------------------------------------------------------------------
+ Laboratoire : Labo2
+ Fichier     : String.hpp
+ Auteur(s)   : Gilliand Loris - Tutic Mateo
+ Date        : 27.03.2019
+
+ But         : Header de la classe String
+
+ Remarque(s) : Met à disposition plusieurs constructeurs (sans param, à partir
+               d'une chaine, copie, à partir d'un char, à partir d'un entier,
+               à partir d'un double, à partir d'un booleen).
+
+               Met à disposition pluisieurs methodes acceptant un string ou une
+               chaine en paramètre (assign, equals, append). Il existe aussi une
+               méthode d'accès (at), d'extraction de la chaine (c_str) et une
+               rendant la longeur de la chaine (getLength).
+
+               Les operateurs +, +=, ==, << et >> sont surchargés. L'operateur +
+               offre trois possibilités (char* + String, String + String,
+               String + char*).
+
+ Compilateur : MinGW-g++ 6.3.0 - Apple LLVM 9.1.0
+ -----------------------------------------------------------------------------------
+ */
+
 #ifndef STRING_HPP
 #define STRING_HPP
 

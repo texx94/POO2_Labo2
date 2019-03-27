@@ -1,3 +1,16 @@
+/*
+ -----------------------------------------------------------------------------------
+ Laboratoire : Labo2
+ Fichier     : String.cpp
+ Auteur(s)   : Gilliand Loris - Tutic Mateo
+ Date        : 27.03.2019
+
+ But         : Implémentation de la classe String
+
+ Compilateur : MinGW-g++ 6.3.0 - Apple LLVM 9.1.0
+ -----------------------------------------------------------------------------------
+ */
+
 #include "String.hpp"
 
 #include <cstring>
@@ -90,7 +103,9 @@ String& String::assign(const String& other) {
 }
 
 String& String::assign(const char* other) {
-   memcpy(value,other,strlen(other) + 1);
+   delete[] value;
+   value = new char[strlen(other) + 1];
+   strcpy(value, other);
    return *this;
 }
 
@@ -142,11 +157,13 @@ String& String::operator+=(const char* rhs) {
 }
 
 String& String::operator=(const String& rhs) {
-   return this->assign(rhs);
+   this->assign(rhs);
+   return *this;
 }
 
 String& String::operator=(const char* rhs) {
-   return this->assign(rhs);
+   this->assign(rhs);
+   return *this;
 }
 
 bool String::operator==(const String& rhs) {
@@ -163,7 +180,9 @@ std::ostream& operator<<(std::ostream& os, const String& rhs) {
 }
 
 std::istream& operator>>(std::istream& is, String& rhs) {
-   gets(rhs.value);
+   delete[] rhs.value;
+   rhs.value = new char[80];
+   fgets(rhs.value, 80, stdin);
    return is;
 }
 
