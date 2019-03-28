@@ -11,7 +11,7 @@
                d'une chaine, copie, à partir d'un char, à partir d'un entier,
                à partir d'un double, à partir d'un booleen).
 
-               Met à disposition pluisieurs methodes acceptant un string ou une
+               Met à disposition plusieurs méthodes acceptant un string ou une
                chaine en paramètre (assign, equals, append). Il existe aussi une
                méthode d'accès (at), d'extraction de la chaine (c_str) et une
                rendant la longeur de la chaine (getLength).
@@ -57,7 +57,7 @@ public:
     * Constructeur de copie
     * @param s Instance de la classe String sur laquelle on fait la copie
     */
-    String(const String& s);
+   String(const String& s);
 
    /**
     * Constructeur à partir d'un caractère
