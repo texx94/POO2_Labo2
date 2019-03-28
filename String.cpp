@@ -16,7 +16,6 @@
 #include <cstring>
 #include <cstdlib>
 #include <sstream>
-#include <iostream>  // TODO : Déjà inclus dans String.hpp donc l'enlever d'ici non ? (TUM)
 
 using namespace std;
 
