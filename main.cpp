@@ -26,7 +26,7 @@ int main() {
 
    cout << boolalpha;   // afin d'afficher true/false en console
 
-   cout << "Tests des constructeurs basiques :" << endl;
+   cout << "Tests des constructeurs basiques :" << endl << "Entrer une valeur pour le string s1 : ";
    String s1;              // test le constructeur sans paramètre.
    const String s2("hello");     // test le constructeur depuis une chaine de caractères
    String s3 = s2;         // test le constructeur de copie
@@ -36,7 +36,7 @@ int main() {
 
    cout << "Tests des constructeurs specifiques :" << endl;
    cout << String('c') << endl << String(123) << endl
-        << String(1.23) << endl << String(true) << endl;
+        << String(1.23) << endl << String(true) << endl << endl;
 
    cout << "Tests des methodes et operateurs :" << endl
         << "Longeur de la chaine s2 \"hello\" : " << s2.getLength() << endl << endl;
