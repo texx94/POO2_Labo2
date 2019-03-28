@@ -181,7 +181,7 @@ std::ostream& operator<<(std::ostream& os, const String& rhs) {
 std::istream& operator>>(std::istream& is, String& rhs) {
    delete[] rhs.value;
    rhs.value = new char[String::MAX_CHAR_READ];
-   fgets(rhs.value, String::MAX_CHAR_READ, stdin);
+   is.getline(rhs.value, String::MAX_CHAR_READ);
    return is;
 }
 
