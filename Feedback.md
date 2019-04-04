@@ -37,7 +37,6 @@ void String::initConcatCStrings(String& dest,
 
   cstring[size] = '\0';
 
-
   // Clean and init
   dest.memoryClean();
   dest._cstr = cstring;
